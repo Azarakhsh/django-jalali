@@ -49,6 +49,9 @@ class BarTimeTestCase(TestCase):
         bar_times = BarTime.objects.filter(datetime=self.datetime)
         self.assertEqual(len(bar_times), 1)
 
+    def test_filter_by_exact_year(self):
+        bar_times = BarTime.objects.filter(datetime__year="1380").order_by('-id')
+        self.assertEqual(len(bar_times), 1)
 
 class  JformatTestCase(TestCase):
 
